@@ -1,17 +1,21 @@
-var webdriver = require('selenium-webdriver'),
-    By = require('selenium-webdriver').By,
-    until = require('selenium-webdriver').until;
-
+//
+//"use strict";
+//
+var webdriver = require('selenium-webdriver');
+  By = require('selenium-webdriver').By;
+//   until = require('selenium-webdriver').until;
+//
 var driver = new webdriver.Builder()
-    .forBrowser('firefox')
-    .build();
-
-driver.get('http://www.grubhub.com');
-driver.findElement(By.className('topNav-signIn')).click();
-driver.findElement(By.className('formInput--email')).click();
-driver.findElement(By.className('formInput--email')).sendKeys('meetup.eat@gmail.com');
-driver.findElement(By.className('formInput--password')).click();
-driver.findElement(By.className('formInput--password')).sendKeys('galvanize11');
-driver.findElement(By.className('ghs-spinner')).click();
-// driver.findElement(By.name('btnG')).click();
-// driver.quit();
+  .forBrowser('chrome')
+  .build();
+//
+driver.get('https://denverpizzaco.hungerrush.com/account/logon');
+driver.findElement(By.id('UserName')).sendKeys('hajek.rob@gmail.com');
+driver.findElement(By.id('Password')).click();
+driver.findElement(By.id('Password')).sendKeys('franks4s');
+driver.findElement(By.className('ui-button')).click().then(function(){
+  return driver.findElement(By.className('deliveryImg')).click().then(function(){
+     driver.findElement(By.className('deliveryImg')).click().then(function(){
+  });
+});
+});
