@@ -1,15 +1,71 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+  <head>
+    <meta charset="utf-8">
+    <title>Untitled</title>
 
-{% block title %}{% endblock %}
+    <link rel="stylesheet" href="public/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
+    <link rel="stylesheet" type="text/css" href="public/css/main.css">
+  </head>
+  <body>
 
-{% block content %}
+<div class='row'>
+  <div class="col-xs-8 col-xs-offset-4">
+  <img src="public/css/pizza1.jpg" class="animated infinite pulse">
+  </div>
+</div>
 
-  <div class="container">
+<br><hr><br>
 
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
-
+<div class="row" ng-controller="PizzaController">
+<form class="col-xs-8 col-xs-offset-2">
+  <div class="form-group">
+    <label>Paste MeetUp Event URL</label>
+    <input ng-model="eventURL" class="form-control" placeholder="MeetUp Event URL">
   </div>
 
-{% endblock %}
+  <!-- <div class="form-group">
+    <label>Select the percentage of MeetUp RSVPs that you expect to actually attend your event.</label>
+     <select class="form-control" required>
+        <option value = .1 >10%</option>
+        <option value = .25>25%</option>
+        <option value = .333>33%</option>
+        <option value = .5>50%</option>
+        <option value = .6666>66%</option>
+        <option value = .75>75%</option>
+        <option value = .9>90%</option>
+        <option value = 1>100%</option>
+    </select>
+    </div>
+       <hr>
+     <label>Denver Pizza Co. Acccount Email</label>
+    <div>
+      <input type="email" class="form-control" placeholder="DPC Email" required>
+    </div>
+    <div>
+      <label>Denver Pizza Co. Account Password</label>
+      <input type="password" class="form-control" placeholder="DPC Password" required>
+    </div> -->
+  <div class="col-xs-8 col-xs-offset-2">
+  <p>{{eventID}}</p>
+  <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary">Submit Order</button>
+  </div>
+</form>
+</div>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <script type="text/javascript" src="public/js/main.js"></script>
+    <script src="controllers/PizzaController.js"></script>
+    <script src="services/services.js"></script>
+
+
+  </body>
+</html>
