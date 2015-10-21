@@ -3,8 +3,6 @@ var router = express.Router();
 var path = require('path');
 var webdriver = require('selenium-webdriver');
   By = require('selenium-webdriver').By;
-var username = 'hajek.rob@gmail.com';
-var password = 'franks4s';
 
 router.get('/', function(req, res, next) {
   res.render('index');
