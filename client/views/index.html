@@ -25,12 +25,10 @@
     <input ng-model="eventURL" class="form-control" placeholder="MeetUp Event URL">
   </div>
 
-  <div class="col-xs-8 col-xs-offset-2">
-    <p ng-show="eventInfo = null">{{eventInfo.name}}</p>
-    <p>{{ooo}}</p>
+  <div class="col-xs-8">
+    <p>Is this the correct event and address?</p>
     <p>{{eventInfo.name}}</p>
-    <p>dfkjaskldfjsaljflksd<p>
-  <!--   <p>{{scope.eventInfo.address_name}} -->
+    <p>{{eventInfo.address_name}}, {{eventInfo.address_street}}, {{eventInfo.address_city}} {{eventInfo.zip_code}}</p>
   </div>
 
 
@@ -61,7 +59,6 @@
       <input type="password" class="form-control" placeholder="DPC Password" required>
     </div> -->
   <div class="col-xs-8 col-xs-offset-2">
-  <p>{{eventID}}</p>
   <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary">Submit Order</button>
   </div>
 </form>

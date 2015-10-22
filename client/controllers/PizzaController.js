@@ -25,7 +25,6 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
       $scope.getZip($scope.eventInfo);
        // .error(function(data) {
        //   console.log(error);
-      console.log($scope.eventInfo);
      });
    };
 
