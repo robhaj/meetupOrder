@@ -5,12 +5,11 @@ var http = require('http');
 var path = require('path');
 var webdriver = require('selenium-webdriver');
   By = require('selenium-webdriver').By;
-
-  var request = require("request");
+var request = require("request");
 
 
 var meetupkey = '5a783fa7f76117147b97d1f524be';
-// var url = "https://api.meetup.com/2/events?callback=JSON_CALLBACK&key='+meetupkey+'&event_id='+req.params.id+'&sign=true'";
+
 router.get('/', function(req, res, next) {
   res.render('index');
 });
@@ -20,12 +19,20 @@ router.get('/', function(req, res, next) {
       if (!error) {
       res.send(JSON.parse(data.body).results[0]);
     // console.log(response["results"][0]["venue"]["lat"]);
-  }
-  console.log(res);
-});
+   }
+  });
  });
 
-  // return $http.jsonp('https://api.meetup.com/2/events?callback=JSON_CALLBACK&key='+meetupkey+'&event_id='+eventID+'&sign=true');
+ router.post('/getZip', function (req, res) {
+  console.log(req.body);
+  request('http://maps.googleapis.com/maps/api/geocode/json?latlng='+req.body.lat+','+req.body.lon, function(error, data) {
+        if (!error) {
+        res.send(JSON.parse(data.body).results[0].address_components[7].short_name);
+      // console.log(response["results"][0]["venue"]["lat"]);
+      }
+    });
+   });
+
 
 // router.post('/data', function(req, res, next){
 //   var meetupInfo = req.body;
