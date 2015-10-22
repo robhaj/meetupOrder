@@ -22,25 +22,22 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
         zip_code: ''
       };
 
-      $scope.getZip();
+      $scope.getZip($scope.eventInfo);
        // .error(function(data) {
        //   console.log(error);
       console.log($scope.eventInfo);
      });
    };
 
-$scope.getZip = function() {
-    meetupFactory.getZip({lat: $scope.eventInfo.lat, lon: $scope.eventInfo.lon})
+$scope.getZip = function(eventInfo) {
+    meetupFactory.getZip({lat: eventInfo.lat, lon: eventInfo.lon})
       .success(function(data){
-        $scope.eventInfo.zip_code = data;
-
-        // $scope.eventInfo.zip_code = $scope.zip;
+        eventInfo.zip_code = data;
+        console.log(eventInfo);
        // .error(function(data) {
        //   console.log(error);
      });
    };
-
-
 
 }]);
 
