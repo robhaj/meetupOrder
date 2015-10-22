@@ -5,8 +5,8 @@ myApp.config(function($routeProvider) {
   .when("/", {
     templateUrl: "./views/index.html",
     controller: "PizzaController"
-  })
-  .otherwise({
-    redirectTo: "/"
   });
+  // .otherwise({
+  // //   redirectTo: "/"
+  // });
 });
