@@ -10,9 +10,9 @@ var request = require("request");
 
 var meetupkey = '5a783fa7f76117147b97d1f524be';
 
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
+// router.get('/', function(req, res, next) {
+//   // res.send('index');
+// });
 
  router.get('/data/:id', function (req, res) {
    request("https://api.meetup.com/2/events?key="+ meetupkey+'&event_id='+req.params.id+'&sign=true', function(error, data) {

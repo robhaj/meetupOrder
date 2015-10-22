@@ -1,6 +1,7 @@
 myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootScope", function($scope, $http, meetupFactory, $rootScope) {
   $scope.eventURL = "";
   $scope.eventInfo = {};
+  $scope.ooo = "ooo";
 
  $scope.findEvent = function() {
     $scope.eventID = $scope.eventURL.split("/").slice(-2,-1).toString();
