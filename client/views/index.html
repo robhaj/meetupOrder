@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" ng-app='myApp'>
+<html lang="en" ng-app="myApp">
   <head>
     <meta charset="utf-8">
-    <title>Untitled</title>
+    <title>Meetup.Eat</title>
 
-    <link rel="stylesheet" href="public/css/animate.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="public/css/main.css">
+    <link rel="stylesheet" href="../public/css/animate.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/main.css">
   </head>
   <body>
 
 <div class='row'>
   <div class="col-xs-8 col-xs-offset-4">
-  <img src="public/css/pizza1.jpg" class="animated infinite pulse">
+  <img src="../public/css/pizza1.jpg" class="animated infinite pulse">
   </div>
 </div>
 
@@ -24,6 +24,15 @@
     <label>Paste MeetUp Event URL</label>
     <input ng-model="eventURL" class="form-control" placeholder="MeetUp Event URL">
   </div>
+
+  <div class="col-xs-8">
+    <p>Is this the correct event and address?</p>
+    <p>{{eventInfo.name}}</p>
+    <p>{{eventInfo.address_name}}, {{eventInfo.address_street}}, {{eventInfo.address_city}} {{eventInfo.zip_code}}</p>
+  </div>
+
+
+  <hr>
 
   <!-- <div class="form-group">
     <label>Select the percentage of MeetUp RSVPs that you expect to actually attend your event.</label>
@@ -38,7 +47,9 @@
         <option value = 1>100%</option>
     </select>
     </div>
+
        <hr>
+
      <label>Denver Pizza Co. Acccount Email</label>
     <div>
       <input type="email" class="form-control" placeholder="DPC Email" required>
@@ -48,22 +59,20 @@
       <input type="password" class="form-control" placeholder="DPC Password" required>
     </div> -->
   <div class="col-xs-8 col-xs-offset-2">
-  <p>{{eventID}}</p>
   <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary">Submit Order</button>
   </div>
 </form>
+
 </div>
 
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
 
-    <script src="app.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
 
-    <script type="text/javascript" src="public/js/main.js"></script>
-    <script src="controllers/PizzaController.js"></script>
-    <script src="services/services.js"></script>
+    <script type="text/javascript" src="/controllers/PizzaController.js"></script>
+    <script type="text/javascript" src="/services/services.js"></script>
 
 
   </body>
