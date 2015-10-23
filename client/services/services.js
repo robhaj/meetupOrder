@@ -10,10 +10,12 @@ myApp.factory("meetupFactory", ["$http", function($http) {
     console.log(coordinates);
    return $http.post('/getZip', coordinates);
  };
+
+  object.placeOrder = function(info) {
+    console.log(info);
+    return $http.post('/data', info);
+  };
     return object;
 }]);
 
 // key=ucBeHVPTcKDldQGHC1jbK9l0RuhTuuxE&
-
-
-

@@ -32,6 +32,10 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
      });
    };
 
+  $scope.placeOrder = function(info) {
+    return meetupFactory.placeOrder($scope.eventInfo);
+  };
+
 $scope.getZip = function(eventInfo) {
     meetupFactory.getZip({lat: eventInfo.lat, lon: eventInfo.lon})
       .success(function(data){
