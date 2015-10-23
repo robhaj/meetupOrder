@@ -1,7 +1,8 @@
 myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootScope", function($scope, $http, meetupFactory, $rootScope) {
   $scope.eventURL = "";
-  $scope.eventInfo = {};
-  $scope.ooo = "ooo";
+  // $scope.eventInfo = {};
+  // $scope.expectedRatio = '';
+
 
  $scope.findEvent = function() {
     $scope.eventID = $scope.eventURL.split("/").slice(-2,-1).toString();
@@ -19,7 +20,8 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
         address_city: data.venue.city,
         lat: data.venue.lat,
         lon: data.venue.lon,
-        zip_code: ''
+        zip_code: '',
+        expected_ratio: parseFloat($scope.expectedRatio)
       };
 
       $scope.getZip($scope.eventInfo);
@@ -33,6 +35,7 @@ $scope.getZip = function(eventInfo) {
       .success(function(data){
         eventInfo.zip_code = data;
         console.log(eventInfo);
+        console.log(typeof $scope.expectedRatio);
        // .error(function(data) {
        //   console.log(error);
      });
