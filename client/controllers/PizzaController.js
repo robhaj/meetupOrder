@@ -1,7 +1,7 @@
 myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootScope", function($scope, $http, meetupFactory, $rootScope) {
   $scope.eventURL = "";
   // $scope.eventInfo = {};
-  $scope.expectedRatio = '';
+  // $scope.expectedRatio = '';
 
 
  $scope.findEvent = function() {
