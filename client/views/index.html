@@ -56,14 +56,14 @@
 
      <label>Denver Pizza Co. Acccount Email</label>
     <div>
-      <input type="email" class="form-control" placeholder="DPC Email" required>
+      <input ng-model = "email" type="email" class="form-control" placeholder="DPC Email" required>
     </div>
     <div>
       <label>Denver Pizza Co. Account Password</label>
-      <input type="password" class="form-control" placeholder="DPC Password" required>
+      <input ng-model = "password" type="password" class="form-control" placeholder="DPC Password" required>
     </div>
   <div class="col-xs-8 col-xs-offset-2">
-  <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary">Submit Order</button>
+  <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary" required>Submit Order</button>
   </div>
 </form>
 

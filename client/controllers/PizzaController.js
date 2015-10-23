@@ -21,7 +21,9 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
         lat: data.venue.lat,
         lon: data.venue.lon,
         zip_code: '',
-        expected_ratio: parseFloat($scope.expectedRatio)
+        expected_ratio: parseFloat($scope.expectedRatio),
+        user_email: $scope.email,
+        user_password: $scope.password
       };
 
       $scope.getZip($scope.eventInfo);
