@@ -1,6 +1,7 @@
 myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootScope", function($scope, $http, meetupFactory, $rootScope) {
   $scope.eventURL = "";
   $scope.correctInfo = false;
+  $scope.incorrectInfo = false;
   // $scope.eventInfo = {};
   // $scope.expectedRatio = '';
 
@@ -22,12 +23,13 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
         lat: data.venue.lat,
         lon: data.venue.lon,
         zip_code: '',
-        expected_ratio: parseFloat($scope.expectedRatio),
-        user_email: $scope.email,
-        user_password: $scope.password
+        expected_ratio: Number,
+        user_email: String,
+        user_password: String
       };
 
       $scope.getZip($scope.eventInfo);
+      $scope.incorrectInfo = false;
        // .error(function(data) {
        //   console.log(error);
      });
@@ -37,20 +39,32 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
     return meetupFactory.placeOrder($scope.eventInfo);
   };
 
-$scope.getZip = function(eventInfo) {
-    meetupFactory.getZip({lat: eventInfo.lat, lon: eventInfo.lon})
-      .success(function(data){
-        eventInfo.zip_code = data;
-        console.log(eventInfo);
-        console.log(typeof $scope.expectedRatio);
-       // .error(function(data) {
-       //   console.log(error);
-     });
-   };
+  $scope.getZip = function(eventInfo) {
+      meetupFactory.getZip({lat: eventInfo.lat, lon: eventInfo.lon})
+        .success(function(data){
+          eventInfo.zip_code = data;
+          console.log(eventInfo);
+          console.log(typeof $scope.expectedRatio);
+         // .error(function(data) {
+         //   console.log(error);
+       });
+     };
 
+  $scope.addUser = function () {
+    $scope.eventInfo.user_email = $scope.email;
+    $scope.eventInfo.user_password = $scope.password;
+    $scope.eventInfo.expected_ratio =  parseFloat($scope.expectedRatio);
+  };
 
-$scope.confirmInfo = function () {
-  $scope.correctInfo = true;
+  $scope.confirmInfo = function () {
+    $scope.correctInfo = true;
+    };
+
+  $scope.denyInfo = function () {
+    $scope.incorrectInfo = true;
+    $scope.eventInfo = null;
+    $scope.eventURL = "";
+
   };
 
 

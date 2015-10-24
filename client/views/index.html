@@ -24,6 +24,9 @@
     <label>Paste MeetUp Event URL</label>
     <input ng-model="eventURL" class="form-control" placeholder="MeetUp Event URL">
      <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary" required>Find Meet Up</button>
+     <div ng-show="incorrectInfo" class="alert alert-danger">
+        <span> Please resubmit the Meetup link and/or verify that the Meetup page lists a valid address!</span>
+    </div>
   </div>
 
   <div class="col-xs-12" ng-hide = "eventInfo == null">
@@ -31,7 +34,7 @@
     <p>{{eventInfo.name}}</p>
     <p>{{eventInfo.address_name}}, {{eventInfo.address_street}}, {{eventInfo.address_city}} {{eventInfo.zip_code}}</p>
     <button class="btn btn-sm btn-primary" ng-click = "confirmInfo()">YES</button>
-    <button class="btn btn-sm btn-primary">NO</button>
+    <button class="btn btn-sm btn-primary" ng-click = "denyInfo()">NO</button>
     <br><br>
   </div>
 
@@ -46,7 +49,7 @@
         <option value = .25>25%</option>
         <option value = .333>33%</option>
         <option value = .5>50%</option>
-        <option value = .6666>66%</option>
+        <option value = .666>66%</option>
         <option value = .75>75%</option>
         <option value = .9>90%</option>
         <option value = 1>100%</option>
@@ -66,7 +69,7 @@
       <input ng-model = "password" type="password" class="form-control" placeholder="DPC Password" required>
     </div>
   <div class="col-xs-8 col-xs-offset-2">
-  <button ng-click="placeOrder(data)" type="submit" class="btn btn-block btn-primary">Submit Order</button>
+  <button ng-click="placeOrder(data); addUser()" type="submit" class="btn btn-block btn-primary">Submit Order</button>
   </div>
   </div>
 </form>
