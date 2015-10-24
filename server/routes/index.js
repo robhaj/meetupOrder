@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var https = require('https');
 var http = require('http');
-var path = require('path');
 var config = require('../_config.js');
 var request = require("request");
 var meetupkey = config.meetupkey;
