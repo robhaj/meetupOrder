@@ -1,5 +1,6 @@
 myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootScope", function($scope, $http, meetupFactory, $rootScope) {
   $scope.eventURL = "";
+  $scope.correctInfo = false;
   // $scope.eventInfo = {};
   // $scope.expectedRatio = '';
 
@@ -47,7 +48,14 @@ $scope.getZip = function(eventInfo) {
      });
    };
 
+
+$scope.confirmInfo = function () {
+  $scope.correctInfo = true;
+  };
+
+
 }]);
+
 
 
 

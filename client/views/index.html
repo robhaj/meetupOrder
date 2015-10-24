@@ -23,17 +23,21 @@
   <div class="form-group">
     <label>Paste MeetUp Event URL</label>
     <input ng-model="eventURL" class="form-control" placeholder="MeetUp Event URL">
+     <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary" required>Find Meet Up</button>
   </div>
 
   <div class="col-xs-12" ng-hide = "eventInfo == null">
     <p>Is this the correct event and address?</p>
     <p>{{eventInfo.name}}</p>
     <p>{{eventInfo.address_name}}, {{eventInfo.address_street}}, {{eventInfo.address_city}} {{eventInfo.zip_code}}</p>
+    <button class="btn btn-sm btn-primary" ng-click = "confirmInfo()">YES</button>
+    <button class="btn btn-sm btn-primary">NO</button>
+    <br><br>
   </div>
-
 
   <hr>
 
+  <div ng-show = "correctInfo">
   <div class="form-group">
     <label>Select the percentage of MeetUp RSVPs that you expect to actually attend your event.</label>
      <select class="form-control" ng-model = 'expectedRatio' required>
@@ -53,7 +57,6 @@
     </div>
 
        <hr>
-
      <label>Denver Pizza Co. Acccount Email</label>
     <div>
       <input ng-model = "email" type="email" class="form-control" placeholder="DPC Email" required>
@@ -63,8 +66,8 @@
       <input ng-model = "password" type="password" class="form-control" placeholder="DPC Password" required>
     </div>
   <div class="col-xs-8 col-xs-offset-2">
-  <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary" required>Submit Order</button>
   <button ng-click="placeOrder(data)" type="submit" class="btn btn-block btn-primary">Submit Order</button>
+  </div>
   </div>
 </form>
 
