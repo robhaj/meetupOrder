@@ -1,15 +1,10 @@
 myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootScope", function($scope, $http, meetupFactory, $rootScope) {
   $scope.eventURL = "";
-  // $scope.eventInfo = {};
-  // $scope.expectedRatio = '';
 
-
- $scope.findEvent = function() {
+  $scope.findEvent = function() {
     $scope.eventID = $scope.eventURL.split("/").slice(-2,-1).toString();
-    console.log($scope.eventID);
-     meetupFactory.getEvent($scope.eventID)
-      .success(function(data){
-        console.log(data);
+    meetupFactory.getEvent($scope.eventID)
+    .success(function(data){
 
       $scope.eventInfo = {
         name: data.name,
@@ -27,29 +22,17 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
       };
 
       $scope.getZip($scope.eventInfo);
-       // .error(function(data) {
-       //   console.log(error);
-     });
-   };
+    });
+  };
 
   $scope.placeOrder = function(info) {
     return meetupFactory.placeOrder($scope.eventInfo);
   };
 
-$scope.getZip = function(eventInfo) {
+  $scope.getZip = function(eventInfo) {
     meetupFactory.getZip({lat: eventInfo.lat, lon: eventInfo.lon})
-      .success(function(data){
-        eventInfo.zip_code = data;
-        console.log(eventInfo);
-        console.log(typeof $scope.expectedRatio);
-       // .error(function(data) {
-       //   console.log(error);
-     });
-   };
-
+    .success(function(data){
+      eventInfo.zip_code = data;
+    });
+  };
 }]);
-
-
-
-
-    // meetupFactory.getZip({lat: $scope.eventInfo.lat, lon: $scope.eventInfo.lon});

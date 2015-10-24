@@ -3,36 +3,28 @@ var router = express.Router();
 var https = require('https');
 var http = require('http');
 var path = require('path');
+var config = require('../_config.js');
+var request = require("request");
+var meetupkey = config.meetupkey;
 var webdriver = require('selenium-webdriver');
   By = require('selenium-webdriver').By;
-var request = require("request");
 
-
-var meetupkey = '5a783fa7f76117147b97d1f524be';
-
-// router.get('/', function(req, res, next) {
-//   // res.send('index');
-// });
-
- router.get('/data/:id', function (req, res) {
-   request("https://api.meetup.com/2/events?key="+ meetupkey+'&event_id='+req.params.id+'&sign=true', function(error, data) {
-      if (!error) {
+router.get('/data/:id', function (req, res) {
+  request("https://api.meetup.com/2/events?key="+ meetupkey+'&event_id='+req.params.id+'&sign=true', function(error, data) {
+    if (!error) {
       res.send(JSON.parse(data.body).results[0]);
-    // console.log(response["results"][0]["venue"]["lat"]);
-   }
+    }
   });
- });
+});
 
- router.post('/getZip', function (req, res) {
+router.post('/getZip', function (req, res) {
   console.log(req.body);
   request('http://maps.googleapis.com/maps/api/geocode/json?latlng='+req.body.lat+','+req.body.lon, function(error, data) {
-        if (!error) {
-        res.send(JSON.parse(data.body).results[0].address_components[7].short_name);
-      // console.log(response["results"][0]["venue"]["lat"]);
-      }
-    });
-   });
-
+    if (!error) {
+      res.send(JSON.parse(data.body).results[0].address_components[7].short_name);
+    }
+  });
+});
 
 router.post('/data', function(req, res, next){
   var meetupInfo = req.body;
@@ -43,8 +35,8 @@ router.post('/data', function(req, res, next){
   var zip = meetupInfo.zip_code;
   var quantity = Math.ceil((((parseInt(meetupInfo.attending)*meetupInfo.expected_ratio)*2)/8)).toString();
   var driver = new webdriver.Builder()
-  .forBrowser('chrome')
-  .build();
+    .forBrowser('chrome')
+    .build();
 
   //login page
   driver.get('https://denverpizzaco.hungerrush.com/account/logon');
@@ -69,7 +61,7 @@ router.post('/data', function(req, res, next){
   //selects cheese
   var x = driver.findElements(webdriver.By.className('ui-button'));
   x.then(function(cheese){
-    cheese[2].click();
+    cheese[3].click();
     driver.sleep(5000);
 
     //selects xlarge
@@ -90,11 +82,17 @@ router.post('/data', function(req, res, next){
         //adds to cart
         var k = driver.findElements(By.className('ui-button'));
         k.then(function(add){
-          add[30].click();
+          add[31].click();
           driver.sleep(3000);
 
           //checkout
           driver.findElement(By.id('lnkCheckout')).click();
+          driver.sleep(2000);
+          driver.findElement(By.id('CreditCard')).sendKeys('0000123456789876');
+          driver.findElement(By.id('CardHolderName')).sendKeys('Michael Jeffery Herman');
+          driver.findElement(By.id('ExpMonth')).sendKeys('1');
+          driver.findElement(By.id('ExpYear')).sendKeys('1');
+          driver.findElement(By.id('SecurityCode')).sendKeys('123');
         });
       });
     });
