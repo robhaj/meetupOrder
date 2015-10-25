@@ -23,11 +23,15 @@
   <div class="form-group">
     <label>Paste MeetUp Event URL</label>
     <input ng-model="eventURL" class="form-control" placeholder="MeetUp Event URL">
-     <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary" required>Find Meet Up</button>
-     <div ng-show="incorrectInfo" class="alert alert-danger">
+        <div class="col-xs-8 col-xs-offset-2">
+        <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary" required>Find Meet Up</button>
+        </div>
+        <br>
+        <div ng-show="incorrectInfo" class="alert alert-danger">
         <span> Please resubmit the Meetup link and/or verify that the Meetup page lists a valid address!</span>
-    </div>
-  </div>
+        </div>
+   </div>
+   <br>
 
   <div class="col-xs-12" ng-hide = "eventInfo == null">
     <p>Is this the correct event and address?</p>

@@ -44,7 +44,6 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
         .success(function(data){
           eventInfo.zip_code = data;
           console.log(eventInfo);
-          console.log(typeof $scope.expectedRatio);
          // .error(function(data) {
          //   console.log(error);
        });

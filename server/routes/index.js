@@ -84,8 +84,11 @@ router.post('/data', function(req, res, next){
       z.then(function(pepperoni){
         pepperoni[39].click();
         driver.findElement(By.id('i1_qty')).clear();
+        // var test = findElement(By.id('i1_qty'));
         driver.findElement(By.id('i1_qty')).sendKeys(quantity);
+        // console.log(test);
         driver.sleep(3000);
+
 
         //adds to cart
         var k = driver.findElements(By.className('ui-button'));
