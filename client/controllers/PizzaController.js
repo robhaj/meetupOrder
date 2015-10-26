@@ -6,6 +6,8 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
   // $scope.expectedRatio = '';
 
 
+//Find specific event and create object
+
  $scope.findEvent = function() {
     $scope.eventID = $scope.eventURL.split("/").slice(-2,-1).toString();
     console.log($scope.eventID);
@@ -49,11 +51,15 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
        });
      };
 
+//Add DPC username and password + expected attendance ratio to event object
+
   $scope.addUser = function () {
     $scope.eventInfo.user_email = $scope.email;
     $scope.eventInfo.user_password = $scope.password;
     $scope.eventInfo.expected_ratio =  parseFloat($scope.expectedRatio);
   };
+
+//Event info check
 
   $scope.confirmInfo = function () {
     $scope.correctInfo = true;

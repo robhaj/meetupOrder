@@ -10,9 +10,7 @@ var request = require("request");
 
 var meetupkey = '5a783fa7f76117147b97d1f524be';
 
-// router.get('/', function(req, res, next) {
-//   // res.send('index');
-// });
+//Meetup  API call
 
  router.get('/data/:id', function (req, res) {
    request("https://api.meetup.com/2/events?key="+ meetupkey+'&event_id='+req.params.id+'&sign=true', function(error, data) {
@@ -22,6 +20,8 @@ var meetupkey = '5a783fa7f76117147b97d1f524be';
    }
   });
  });
+
+ //Event Zip Code API call
 
  router.post('/getZip', function (req, res) {
   console.log(req.body);
@@ -33,6 +33,7 @@ var meetupkey = '5a783fa7f76117147b97d1f524be';
     });
    });
 
+//Begin Driver
 
 router.post('/data', function(req, res, next){
   var meetupInfo = req.body;
