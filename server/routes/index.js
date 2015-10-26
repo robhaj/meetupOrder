@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var https = require('https');
 var http = require('http');
-var config = require('../_config.js');
+var config = require('../config');
 var request = require("request");
 var meetupkey = config.meetupkey;
 var webdriver = require('selenium-webdriver');
@@ -12,7 +12,7 @@ var webdriver = require('selenium-webdriver');
 //Meetup API Call
 
 router.get('/data/:id', function (req, res) {
-  request("https://api.meetup.com/2/events?key="+ meetupkey+'&event_id='+req.params.id+'&sign=true', function(error, data) {
+  request("https://api.meetup.com/2/events?key="+meetupkey+'&event_id='+req.params.id+'&sign=true', function(error, data) {
     if (!error) {
       res.send(JSON.parse(data.body).results[0]);
     }
@@ -68,7 +68,7 @@ router.post('/data', function(req, res, next){
   //selects cheese
   var x = driver.findElements(webdriver.By.className('ui-button'));
   x.then(function(cheese){
-    cheese[3].click();
+    cheese[2].click();
     driver.sleep(5000);
 
     //selects xlarge
@@ -92,7 +92,7 @@ router.post('/data', function(req, res, next){
         //adds to cart
         var k = driver.findElements(By.className('ui-button'));
         k.then(function(add){
-          add[31].click();
+          add[30].click();
           driver.sleep(3000);
 
           //checkout
