@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Meetup.Eat</title>
+<head>
+  <meta charset="utf-8">
+  <title>Meetup.Eat</title>
 
-    <link rel="stylesheet" href="../public/css/animate.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/css/main.css">
-  </head>
-  <body>
+  <link rel="stylesheet" href="../public/css/animate.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../public/css/main.css">
+</head>
+<body>
 
-<div class='row'>
-  <div class="col-xs-8 col-xs-offset-4">
-  <img src="../public/css/pizza1.jpg" class="animated infinite pulse">
+  <div class='row'>
+    <div class="col-xs-8 col-xs-offset-4">
+      <img src="../public/css/pizza1.jpg" class="animated infinite pulse">
+    </div>
   </div>
-</div>
 
-<br><hr><br>
+  <br><hr><br>
 
-<div class="row" ng-controller="PizzaController">
-<form class="col-xs-8 col-xs-offset-2">
-  <div class="form-group">
-    <label>Paste MeetUp Event URL</label>
-    <input ng-model="eventURL" class="form-control" placeholder="MeetUp Event URL">
+  <div class="row" ng-controller="PizzaController">
+    <form class="col-xs-8 col-xs-offset-2">
+      <div class="form-group">
+        <label>Paste MeetUp Event URL</label>
+        <input ng-model="eventURL" class="form-control" placeholder="MeetUp Event URL">
         <div class="col-xs-8 col-xs-offset-2">
-        <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary" required>Find Meet Up</button>
+          <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary" required>Find Meet Up</button>
         </div>
 
         <br><br>
@@ -32,66 +32,66 @@
         <div ng-show="incorrectInfo" class="alert alert-danger col-xs-12">
           <span> Please resubmit the Meetup link and/or verify that the Meetup page lists a valid address!</span>
         </div>
-   </div>
+      </div>
 
-  <br>
+      <br>
 
-  <div class="col-xs-8 col-xs-offset-2 event" ng-hide = "eventInfo == null">
-    <p>Is this the correct event and address?</p>
-    <p>{{eventInfo.name}}</p>
-    <p>{{eventInfo.address_name}}, {{eventInfo.address_street}}, {{eventInfo.address_city}} {{eventInfo.zip_code}}</p>
-    <button class="btn btn-sm btn-primary" ng-click = "confirmInfo()">YES</button>
-    <button class="btn btn-sm btn-primary" ng-click = "denyInfo()">NO</button>
-  </div>
-
-
-  <div ng-show = "correctInfo">
-  <div class="form-group">
-    <label>Select the percentage of MeetUp RSVPs that you expect to actually attend your event.</label>
-     <select class="form-control" ng-model = 'expectedRatio' required>
-        <option value="" selected disabled>Expected Attendance</option>
-        <option value = .1 >10%</option>
-        <option value = .25>25%</option>
-        <option value = .333>33%</option>
-        <option value = .5>50%</option>
-        <option value = .666>66%</option>
-        <option value = .75>75%</option>
-        <option value = .9>90%</option>
-        <option value = 1>100%</option>
-        <option value = 1.1>110%</option>
-        <option value = 1.5>150%</option>
-        <option value = 2>200%</option>
-    </select>
-    </div>
+      <div class="col-xs-8 col-xs-offset-2 event" ng-hide = "eventInfo == null">
+        <p>Is this the correct event and address?</p>
+        <p>{{eventInfo.name}}</p>
+        <p>{{eventInfo.address_name}}, {{eventInfo.address_street}}, {{eventInfo.address_city}} {{eventInfo.zip_code}}</p>
+        <button class="btn btn-sm btn-primary" ng-click = "confirmInfo()">YES</button>
+        <button class="btn btn-sm btn-primary" ng-click = "denyInfo()">NO</button>
+      </div>
 
 
-    <div>
-    <hr>
-      <label>Denver Pizza Co. Acccount Email</label>
-      <input ng-model = "email" type="email" class="form-control" placeholder="DPC Email" required>
-    </div>
-
-    <div>
-      <label>Denver Pizza Co. Account Password</label>
-      <input ng-model = "password" type="password" class="form-control" placeholder="DPC Password" required>
-    </div>
-
-  <div class="col-xs-8 col-xs-offset-2">
-  <button ng-click="placeOrder(data); addUser()" type="submit" class="btn btn-block btn-primary">Submit Order</button>
-  </div>
-  </div>
-
-  <!--  <div ng-view></div> -->
-
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+      <div ng-show = "correctInfo">
+        <div class="form-group">
+          <label>Select the percentage of MeetUp RSVPs that you expect to actually attend your event.</label>
+          <select class="form-control" ng-model = 'expectedRatio' required>
+            <option value="" selected disabled>Expected Attendance</option>
+            <option value = .1 >10%</option>
+            <option value = .25>25%</option>
+            <option value = .333>33%</option>
+            <option value = .5>50%</option>
+            <option value = .666>66%</option>
+            <option value = .75>75%</option>
+            <option value = .9>90%</option>
+            <option value = 1>100%</option>
+            <option value = 1.1>110%</option>
+            <option value = 1.5>150%</option>
+            <option value = 2>200%</option>
+          </select>
+        </div>
 
 
-  <script type="text/javascript" src="/app.js"></script>
+        <div>
+          <hr>
+          <label>Denver Pizza Co. Acccount Email</label>
+          <input ng-model = "email" type="email" class="form-control" placeholder="DPC Email" required>
+        </div>
 
-  <script type="text/javascript" src="/controllers/PizzaController.js"></script>
-  <script type="text/javascript" src="/services/services.js"></script>
+        <div>
+          <label>Denver Pizza Co. Account Password</label>
+          <input ng-model = "password" type="password" class="form-control" placeholder="DPC Password" required>
+        </div>
+
+        <div class="col-xs-8 col-xs-offset-2">
+          <button ng-click="placeOrder(data); addUser()" type="submit" class="btn btn-block btn-primary">Submit Order</button>
+        </div>
+      </div>
+
+      <!--  <div ng-view></div> -->
+
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
 
 
-</body>
-</html>
+      <script type="text/javascript" src="/app.js"></script>
+
+      <script type="text/javascript" src="/controllers/PizzaController.js"></script>
+      <script type="text/javascript" src="/services/services.js"></script>
+
+
+    </body>
+    </html>

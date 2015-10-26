@@ -2,13 +2,10 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
   $scope.eventURL = "";
   $scope.correctInfo = false;
   $scope.incorrectInfo = false;
-  // $scope.eventInfo = {};
-  // $scope.expectedRatio = '';
 
+  //Find specific event and create object
 
-//Find specific event and create object
-
- $scope.findEvent = function() {
+  $scope.findEvent = function() {
     $scope.eventID = $scope.eventURL.split("/").slice(-2,-1).toString();
     meetupFactory.getEvent($scope.eventID)
     .success(function(data){
@@ -30,26 +27,21 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
 
       $scope.getZip($scope.eventInfo);
       $scope.incorrectInfo = false;
-       // .error(function(data) {
-       //   console.log(error);
-     });
-   };
+    });
+  };
 
   $scope.placeOrder = function(info) {
     return meetupFactory.placeOrder($scope.eventInfo);
   };
 
   $scope.getZip = function(eventInfo) {
-      meetupFactory.getZip({lat: eventInfo.lat, lon: eventInfo.lon})
-        .success(function(data){
-          eventInfo.zip_code = data;
-          console.log(eventInfo);
-         // .error(function(data) {
-         //   console.log(error);
-       });
-     };
+    meetupFactory.getZip({lat: eventInfo.lat, lon: eventInfo.lon})
+    .success(function(data){
+      eventInfo.zip_code = data;
+    });
+  };
 
-//Add DPC username and password + expected attendance ratio to event object
+  //Add DPC username and password + expected attendance ratio to event object
 
   $scope.addUser = function () {
     $scope.eventInfo.user_email = $scope.email;
@@ -57,11 +49,11 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
     $scope.eventInfo.expected_ratio =  parseFloat($scope.expectedRatio);
   };
 
-//Event info check
+  //Event info check
 
   $scope.confirmInfo = function () {
     $scope.correctInfo = true;
-    };
+  };
 
   $scope.denyInfo = function () {
     $scope.incorrectInfo = true;
@@ -71,4 +63,3 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootS
   };
 
 }]);
-
