@@ -66,9 +66,10 @@ router.post('/data', function(req, res, next){
   driver.sleep(5000);
 
   //selects cheese
-  var x = driver.findElements(webdriver.By.className('ui-button'));
+   //selects cheese
+  var x = driver.findElement(webdriver.By.xpath('//*[@id="Pizza"]/div/div/div[1]/div/button/span[2]'));
   x.then(function(cheese){
-    cheese[2].click();
+    cheese.click();
     driver.sleep(5000);
 
     //selects xlarge
@@ -90,9 +91,9 @@ router.post('/data', function(req, res, next){
 
 
         //adds to cart
-        var k = driver.findElements(By.className('ui-button'));
+        var k = driver.findElement(By.xpath('/html/body/div[4]/div[3]/div/button/span'));
         k.then(function(add){
-          add[30].click();
+          add.click();
           driver.sleep(3000);
 
           //checkout

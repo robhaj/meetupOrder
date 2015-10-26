@@ -1,4 +1,5 @@
 myApp.factory("meetupFactory", ["$http", function($http) {
+
   var object = {};
 
   object.getEvent = function(eventID) {
@@ -15,5 +16,7 @@ myApp.factory("meetupFactory", ["$http", function($http) {
     console.log(info);
     return $http.post('/data', info);
   };
+
   return object;
+
 }]);
