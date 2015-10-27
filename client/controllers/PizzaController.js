@@ -4,8 +4,7 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
   $scope.correctInfo = false;
   $scope.incorrectInfo = false;
 
-  //Find specific event and create object - HANDLE ERROR
-
+  //Find specific event and create object
   $scope.findEvent = function() {
     $scope.eventID = $scope.eventURL.split("/").slice(-2,-1).toString();
     meetupFactory.getEvent($scope.eventID)
@@ -26,13 +25,18 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
         };
       $scope.getZip($scope.eventInfo);
       $scope.incorrectInfo = false;
+    })
+    .error(function(err){
+      console.log('There is an error');
     });
   };
 
+  //posts object to /data
   $scope.placeOrder = function(info) {
     return meetupFactory.placeOrder($scope.eventInfo);
   };
 
+  //return zip from lat/long
   $scope.getZip = function(eventInfo) {
     meetupFactory.getZip({lat: eventInfo.lat, lon: eventInfo.lon})
     .success(function(data){
@@ -41,24 +45,22 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
   };
 
   //Add DPC username and password + expected attendance ratio to event object
-
   $scope.addUser = function () {
     $scope.eventInfo.user_email = $scope.email;
     $scope.eventInfo.user_password = $scope.password;
     $scope.eventInfo.expected_ratio =  parseFloat($scope.expectedRatio);
   };
 
-  //Event info check
-
+  //Confirm Event Info
   $scope.confirmInfo = function () {
     $scope.correctInfo = true;
   };
 
+  //Reject Event Info
   $scope.denyInfo = function () {
     $scope.incorrectInfo = true;
     $scope.eventInfo = null;
     $scope.eventURL = "";
-
   };
 
 }]);
