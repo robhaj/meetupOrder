@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, '../client/')));
 // *** main routes *** //
 app.use('/', routes);
 app.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '../client/views/index.html'));
+  res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 // catch 404 and forward to error handler
