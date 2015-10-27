@@ -3,7 +3,7 @@ var myApp = angular.module("myApp", ["ngRoute"]);
 myApp.config(function($routeProvider) {
   $routeProvider
   .when("/", {
-    templateUrl: "partails/home.html",
+    templateUrl: "partials/home.html",
     controller: "PizzaController"
   })
   .otherwise({
