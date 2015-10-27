@@ -2,30 +2,44 @@ var express = require('express');
 var router = express.Router();
 var https = require('https');
 var http = require('http');
-var config = require('../config');
 var request = require("request");
-var meetupkey = config.meetupkey;
 var webdriver = require('selenium-webdriver');
-    By = require('selenium-webdriver').By;
+var By = require('selenium-webdriver').By;
 
-router.get('/data/:id', function (req, res) {
-  request("https://api.meetup.com/2/events?key="+meetupkey+'&event_id='+req.params.id+'&sign=true', function(error, data) {
-    if (!error) {
-      res.send(JSON.parse(data.body).results[0]);
+// constants
+var meetupBaseURL = 'https://api.meetup.com/2/events?';
+var googleBaseURL = 'http://maps.googleapis.com/maps/api/geocode/json?';
+
+// config
+var config = require('../_config');
+var meetupkey = config.meetupkey;
+
+
+// get meetup event info
+router.get('/data/:id', function(req, res, next) {
+  var url = meetupBaseURL + 'key='+meetupkey+'&event_id='+req.params.id+'&sign=true';
+  request(url, function(error, data) {
+    if (error) {
+      res.send("Something went wrong!");
     }
+    res.send(JSON.parse(data.body).results[0]);
   });
 });
 
-//Event Zip Code API call
-router.post('/getZip', function (req, res) {
-  request('http://maps.googleapis.com/maps/api/geocode/json?latlng='+req.body.lat+','+req.body.lon, function(error, data) {
-    if (!error) {
-      res.send(JSON.parse(data.body).results[0].address_components[7].short_name);
+
+// get zip code based on lat/long
+router.post('/zip', function(req, res, next) {
+  var url = googleBaseURL + 'latlng='+req.body.lat+','+req.body.lon;
+  request(url, function(error, data) {
+    if (error) {
+      res.send("Something went wrong!");
     }
+    res.send(JSON.parse(data.body).results[0].address_components[7].short_name);
   });
 });
 
-//Begin Driver
+
+// scraping code - REFACTOR!
 router.post('/data', function(req, res, next){
   var meetupInfo = req.body;
   var username = meetupInfo.user_email;
@@ -35,8 +49,8 @@ router.post('/data', function(req, res, next){
   var zip = meetupInfo.zip_code;
   var quantity = Math.ceil((((parseInt(meetupInfo.attending)*meetupInfo.expected_ratio)*2)/8)).toString();
   var driver = new webdriver.Builder()
-  .forBrowser('chrome')
-  .build();
+    .forBrowser('chrome')
+    .build();
 
   //login page
   driver.get('https://denverpizzaco.hungerrush.com/account/logon');
