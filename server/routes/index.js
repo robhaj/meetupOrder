@@ -42,7 +42,6 @@ router.post('/zip', function(req, res, next) {
 router.post('/data', function(req, res, next){
   var meetupInfo = req.body;
   initWD(meetupInfo);
-  var quantity = Math.ceil((((parseInt(meetupInfo.attending)*meetupInfo.expected_ratio)*2)/8)).toString();
 });
 
 

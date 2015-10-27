@@ -5,7 +5,7 @@ var By = require('selenium-webdriver').By;
 //define webdriver function
 function initWD(meetupInfo) {
   var pepQuan = meetupInfo.quantities[0];
-  var cheeseQuan = meetupInfo.quantites[1];
+  var cheeseQuan = meetupInfo.quantities[1];
   var veggieQuan = meetupInfo.quantities[2];
 
   var driver = new webdriver.Builder()
