@@ -5,3 +5,11 @@
   padding-bottom: 2%;
   margin-bottom: 4%;
 }
+
+.animated {
+  -webkit-animation-duration: 6s;
+  animation-duration: 6s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+

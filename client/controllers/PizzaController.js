@@ -42,6 +42,9 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
     meetupFactory.getZip({lat: eventInfo.lat, lon: eventInfo.lon})
     .success(function(data){
       eventInfo.zip_code = data;
+    })
+    .error(function(err) {
+      console.log('There is an error');
     });
   };
 
@@ -63,6 +66,7 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
     $scope.pizzaQuantites = [pepQuantity.toString(), cheeseQuantity.toString(), vegQuantity.toString(), totalPizzas.toString()];
 
     return $scope.pizzaQuantites;
+
   };
 
   //Add DPC username and password + expected attendance ratio to event object
