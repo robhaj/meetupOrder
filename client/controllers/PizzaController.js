@@ -21,7 +21,8 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
           zip_code: '',
           expected_ratio: Number,
           user_email: String,
-          user_password: String
+          user_password: String,
+          quantities: Array
         };
       $scope.getZip($scope.eventInfo);
       $scope.incorrectInfo = false;
@@ -44,11 +45,33 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
     });
   };
 
+  $scope.determineQuantity = function (attending, ratio) {
+
+    var totalPizzas = Math.ceil((((parseInt(attending)*ratio)*2)/8));
+
+    if (totalPizzas <= 2) {
+      var pepQuantity = Math.ceil(totalPizzas * (0.4));
+      var cheeseQuantity = totalPizzas - pepQuantity;
+      var vegQuantity = 0;
+
+    } else {
+      var pepQuantity = Math.ceil(totalPizzas * (0.4).toString());
+      var cheeseQuantity  = Math.floor(totalPizzas * (0.4).toString());
+      var vegQuantity = totalPizzas - (pepQuantity + cheeseQuantity);
+    }
+
+    $scope.pizzaQuantites = [pepQuantity.toString(), cheeseQuantity.toString(), vegQuantity.toString(), totalPizzas.toString()];
+
+    return $scope.pizzaQuantites;
+  };
+
   //Add DPC username and password + expected attendance ratio to event object
   $scope.addUser = function () {
     $scope.eventInfo.user_email = $scope.email;
     $scope.eventInfo.user_password = $scope.password;
     $scope.eventInfo.expected_ratio =  parseFloat($scope.expectedRatio);
+    $scope.eventInfo.quantities = $scope.determineQuantity($scope.eventInfo.attending, $scope.eventInfo.expected_ratio);
+    console.log($scope.eventInfo);
   };
 
   //Confirm Event Info
@@ -62,5 +85,6 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
     $scope.eventInfo = null;
     $scope.eventURL = "";
   };
+
 
 }]);
