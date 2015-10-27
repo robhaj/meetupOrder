@@ -1,11 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var https = require('https');
-var http = require('http');
 var request = require("request");
+
 var initWD = require ('../webdriver.js');
-var webdriver = require('selenium-webdriver');
-var By = require('selenium-webdriver').By;
 
 // constants
 var meetupBaseURL = 'https://api.meetup.com/2/events?';
@@ -43,9 +40,9 @@ router.post('/zip', function(req, res, next) {
 // scraping code
 router.post('/data', function(req, res, next){
   var meetupInfo = req.body;
-  console.log(meetupInfo);
   initWD(meetupInfo);
   var quantity = Math.ceil((((parseInt(meetupInfo.attending)*meetupInfo.expected_ratio)*2)/8)).toString();
 });
+
 
 module.exports = router;

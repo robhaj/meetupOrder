@@ -1,31 +1,29 @@
-myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootScope", function($scope, $http, meetupFactory, $rootScope) {
+myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", function($scope, $http, meetupFactory) {
 
   $scope.eventURL = "";
   $scope.correctInfo = false;
   $scope.incorrectInfo = false;
 
-  //Find specific event and create object
+  //Find specific event and create object - HANDLE ERROR
 
   $scope.findEvent = function() {
     $scope.eventID = $scope.eventURL.split("/").slice(-2,-1).toString();
     meetupFactory.getEvent($scope.eventID)
-    .success(function(data){
-
-      $scope.eventInfo = {
-        name: data.name,
-        description: data.description,
-        attending: data.yes_rsvp_count,
-        address_name: data.venue.name,
-        address_street: data.venue.address_1.split(',')[0],
-        address_city: data.venue.city,
-        lat: data.venue.lat,
-        lon: data.venue.lon,
-        zip_code: '',
-        expected_ratio: Number,
-        user_email: String,
-        user_password: String
-      };
-
+      .success(function(data){
+        $scope.eventInfo = {
+          name: data.name,
+          description: data.description,
+          attending: data.yes_rsvp_count,
+          address_name: data.venue.name,
+          address_street: data.venue.address_1.split(',')[0],
+          address_city: data.venue.city,
+          lat: data.venue.lat,
+          lon: data.venue.lon,
+          zip_code: '',
+          expected_ratio: Number,
+          user_email: String,
+          user_password: String
+        };
       $scope.getZip($scope.eventInfo);
       $scope.incorrectInfo = false;
     });
