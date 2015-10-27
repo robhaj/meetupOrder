@@ -1,4 +1,5 @@
 myApp.factory("meetupFactory", ["$http", function($http) {
+
   var object = {};
 
   object.getEvent = function(eventID) {
@@ -6,11 +7,13 @@ myApp.factory("meetupFactory", ["$http", function($http) {
   };
 
   object.getZip = function(coordinates) {
-    return $http.post('/getZip', coordinates);
+    return $http.post('/zip', coordinates);
   };
-  
+
   object.placeOrder = function(info) {
     return $http.post('/data', info);
   };
+
   return object;
+
 }]);

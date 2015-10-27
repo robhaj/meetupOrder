@@ -1,4 +1,5 @@
 myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$rootScope", function($scope, $http, meetupFactory, $rootScope) {
+
   $scope.eventURL = "";
   $scope.correctInfo = false;
   $scope.incorrectInfo = false;
