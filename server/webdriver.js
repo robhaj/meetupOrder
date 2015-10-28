@@ -1,4 +1,5 @@
 //dependencies
+var config = require('./_config.js');
 var webdriver = require('selenium-webdriver');
 var By = require('selenium-webdriver').By;
 
@@ -7,6 +8,7 @@ function initWD(meetupInfo) {
   var pepQuan = meetupInfo.quantities[0];
   var cheeseQuan = meetupInfo.quantities[1];
   var veggieQuan = meetupInfo.quantities[2];
+  var quantity = meetupInfo.quantities[3];
 
   var driver = new webdriver.Builder()
   .forBrowser('chrome')
@@ -50,7 +52,7 @@ function initWD(meetupInfo) {
       z.then(function(pepperoni){
         pepperoni[39].click();
         driver.findElement(By.id('i1_qty')).clear();
-        driver.findElement(By.id('i1_qty')).sendKeys(cheesePepQuan);
+        driver.findElement(By.id('i1_qty')).sendKeys(quantity);
         driver.sleep(3000);
 
         //adds to cart
@@ -62,11 +64,11 @@ function initWD(meetupInfo) {
           //checkout
           driver.findElement(By.id('lnkCheckout')).click();
           driver.sleep(2000);
-          // driver.findElement(By.id('CreditCard')).sendKeys(config.cc);
-          // driver.findElement(By.id('CardHolderName')).sendKeys(config.cardholder);
-          // driver.findElement(By.id('ExpMonth')).sendKeys(config.expmonth);
-          // driver.findElement(By.id('ExpYear')).sendKeys(config.expyear);
-          // driver.findElement(By.id('SecurityCode')).sendKeys(config.csv);
+          driver.findElement(By.id('CreditCard')).sendKeys(config.cc);
+          driver.findElement(By.id('CardHolderName')).sendKeys(config.cardholder);
+          driver.findElement(By.id('ExpMonth')).sendKeys(config.expmonth);
+          driver.findElement(By.id('ExpYear')).sendKeys(config.expyear);
+          driver.findElement(By.id('SecurityCode')).sendKeys(config.csv);
         });
       });
     });
