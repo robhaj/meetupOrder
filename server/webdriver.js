@@ -36,78 +36,78 @@ function initWD(meetupInfo) {
   driver.sleep(5000);
 
   //selects cheese
-  var x = driver.findElement(webdriver.By.xpath('//*[@id="Pizza"]/div/div/div[1]/div/button/span[2]'));
-  x.then(function(cheese){
+  var firstPizza = driver.findElement(webdriver.By.xpath('//*[@id="Pizza"]/div/div/div[1]/div/button/span[2]'));
+  firstPizza.then(function(cheese){
     cheese.click();
     driver.sleep(5000);
 
-    //selects xlarge
-    var y = driver.findElements(By.className('SzPrice'));
-    y.then(function(xlarge){
+    //selects xlarge and pepperoni
+    var xlarge = driver.findElements(By.className('SzPrice'));
+    xlarge.then(function(xlarge){
       xlarge[4].click();
       driver.findElement(By.name('i1_mod_m33')).click();
       driver.sleep(3000);
 
       //send quantity
-      var q = driver.findElement(By.id('i1_qty'));
-      q.then(function(quantity){
+      var pepperoni = driver.findElement(By.id('i1_qty'));
+      pepperoni.then(function(quantity){
         quantity.clear();
         quantity.sendKeys(pepQuan);
         driver.sleep(3000);
 
         //adds to cart
-        var k = driver.findElement(By.xpath('/html/body/div[4]/div[3]/div/button/span'));
-        k.then(function(add){
+        var pepCart = driver.findElement(By.xpath('/html/body/div[4]/div[3]/div/button/span'));
+        pepCart.then(function(add){
           add.click();
           driver.sleep(3000);
 
           //selects cheese
-          var x = driver.findElement(webdriver.By.xpath('//*[@id="Pizza"]/div/div/div[1]/div/button/span[2]'));
-          x.then(function(cheese){
+          var secondPizza = driver.findElement(webdriver.By.xpath('//*[@id="Pizza"]/div/div/div[1]/div/button/span[2]'));
+          secondPizza.then(function(cheese){
             cheese.click();
             driver.sleep(5000);
 
             //selects xlarge
-            var y = driver.findElements(By.className('SzPrice'));
-            y.then(function(xlarge){
+            var xlarge2 = driver.findElements(By.className('SzPrice'));
+            xlarge2.then(function(xlarge){
               xlarge[4].click();
               driver.sleep(3000);
 
               //send quantity
-              var q = driver.findElement(By.id('i1_qty'));
-              q.then(function(quantity){
+              var cheesePizza = driver.findElement(By.id('i1_qty'));
+              cheesePizza.then(function(quantity){
                 quantity.clear();
                 quantity.sendKeys(cheeseQuan);
                 driver.sleep(3000);
 
                 //adds to cart
-                var k = driver.findElement(By.xpath('/html/body/div[4]/div[3]/div/button/span'));
-                k.then(function(add){
+                var cheeseCart = driver.findElement(By.xpath('/html/body/div[4]/div[3]/div/button/span'));
+                cheeseCart.then(function(add){
                   add.click();
                   driver.sleep(3000);
 
                   //selects veggie
-                  var v = driver.findElement(By.xpath('//*[@id="Pizza"]/div/div/div[4]/div/button/span[2]'));
-                  v.then(function(veggie){
+                  var veggie = driver.findElement(By.xpath('//*[@id="Pizza"]/div/div/div[4]/div/button/span[2]'));
+                  veggie.then(function(veggie){
                     veggie.click();
                     driver.sleep(3000);
 
                     //selects xlarge
-                    var y = driver.findElements(By.className('SzPrice'));
-                    y.then(function(xlarge){
+                    var vegX = driver.findElements(By.className('SzPrice'));
+                    vegX.then(function(xlarge){
                       xlarge[4].click();
                       driver.sleep(3000);
 
                       //send quantity
-                      var q = driver.findElement(By.id('i4_qty'));
-                      q.then(function(quantity){
+                      var vegQuan = driver.findElement(By.id('i4_qty'));
+                      vegQuan.then(function(quantity){
                         quantity.clear();
                         quantity.sendKeys(veggieQuan);
                         driver.sleep(3000);
 
                         //adds to cart
-                        var k = driver.findElement(By.xpath('/html/body/div[4]/div[3]/div/button/span'));
-                        k.then(function(add){
+                        var vegCart = driver.findElement(By.xpath('/html/body/div[4]/div[3]/div/button/span'));
+                        vegCart.then(function(add){
                           add.click();
                           driver.sleep(3000);
 
