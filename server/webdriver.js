@@ -8,7 +8,6 @@ function initWD(meetupInfo) {
   var pepQuan = meetupInfo.quantities[0];
   var cheeseQuan = meetupInfo.quantities[1];
   var veggieQuan = meetupInfo.quantities[2];
-  var quantity = meetupInfo.quantities[3];
 
   //instatiate webdriver
   var driver = new webdriver.Builder()
@@ -35,6 +34,7 @@ function initWD(meetupInfo) {
   driver.findElement(By.id('ui-id-4')).click();
   driver.sleep(5000);
 
+  //REFACTOR TO CHAIN EACH ACTION WITH PROMISES
   //selects cheese
   var firstPizza = driver.findElement(webdriver.By.xpath('//*[@id="Pizza"]/div/div/div[1]/div/button/span[2]'));
   firstPizza.then(function(cheese){
