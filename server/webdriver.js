@@ -119,7 +119,7 @@ function initWD(meetupInfo) {
                           driver.findElement(By.id('ExpMonth')).sendKeys(config.expmonth);
                           driver.findElement(By.id('ExpYear')).sendKeys(config.expyear);
                           driver.findElement(By.id('SecurityCode')).sendKeys(config.csv);
-                          driver.quit();
+                          // driver.quit();
                         });
                       });
                     });

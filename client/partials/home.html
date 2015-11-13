@@ -3,17 +3,19 @@
   <form class="col-xs-8 col-xs-offset-2">
 
     <div class="form-group">
+      <br><br>
 
       <label>Paste MeetUp Event URL</label>
       <input ng-model="eventURL" class="form-control" placeholder="MeetUp Event URL">
 
       <div class="col-xs-8 col-xs-offset-2">
+        <br>
         <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary" required>Find Meet Up</button>
       </div>
 
-      <br><br>
+      <br><br><br>
 
-      <div ng-show="incorrectInfo" class="alert alert-danger col-xs-12">
+      <div ng-show="incorrectInfo" class="alert alert-danger col-xs-8 col-xs-offset-2">
         <span> Please resubmit the Meetup link and/or verify that the Meetup page lists a valid address!</span>
       </div>
 
@@ -51,7 +53,7 @@
 
 
       <div>
-        <hr>
+        <hr><br>
         <label>Denver Pizza Co. Acccount Email</label>
         <input ng-model = "email" type="email" class="form-control" placeholder="DPC Email" required>
       </div>
@@ -64,6 +66,7 @@
       </div>
 
       <div class="col-xs-8 col-xs-offset-2">
+      <br>
         <button ng-click="placeOrder(data); addUser()" type="submit" class="btn btn-block btn-primary">Submit Order</button>
       </div>
     </div>

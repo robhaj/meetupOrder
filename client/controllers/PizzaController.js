@@ -65,6 +65,7 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
 
     $scope.pizzaQuantites = [pepQuantity.toString(), cheeseQuantity.toString(), vegQuantity.toString(), totalPizzas.toString()];
 
+    console.log($scope.pizzaQuantites);
     return $scope.pizzaQuantites;
 
   };

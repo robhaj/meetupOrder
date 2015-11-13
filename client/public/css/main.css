@@ -1,5 +1,6 @@
 body {
-  font-weight: 900;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
 }
 
 .event {
@@ -28,12 +29,16 @@ body {
 
 .btn-primary, .btn-primary:active, .btn-primary:visited {
     background-color: #d25800 !important;
-    font-weight: 900;
+    font-weight: 500;
   }
 
 .btn-primary:hover {
   background-color: #d10000 !important;
-  font-weight: 900;
+  font-weight: 500;
+}
+
+input, hr {
+  border-color: #d25800 !important;
 }
 
 textarea:focus, input:focus, .btn:focus, .form-control:focus, .uneditable-input:focus {
@@ -41,3 +46,15 @@ textarea:focus, input:focus, .btn:focus, .form-control:focus, .uneditable-input:
     box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6) !important;
     outline: 0 none !important;
 }
+
+.info {
+  float: right;
+  margin: 8px;
+  border-color: #d25800 !important;
+}
+
+.alert {
+  text-align: center;
+}
+
+
