@@ -3,6 +3,7 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
   $scope.eventURL = "";
   $scope.correctInfo = false;
   $scope.incorrectInfo = false;
+  $scope.instructions = false;
 
   //Find specific event and create object
   $scope.findEvent = function() {
@@ -91,5 +92,9 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
     $scope.eventURL = "";
   };
 
+  $scope.showInstructions = function () {
+    $scope.instructions = !$scope.instructions;
+    console.log($scope.instructions);
+  };
 
 }]);

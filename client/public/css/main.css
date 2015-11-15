@@ -48,13 +48,20 @@ textarea:focus, input:focus, .btn:focus, .form-control:focus, .uneditable-input:
 }
 
 .info {
-  float: right;
-  margin: 8px;
+  margin: 5px;
   border-color: #d25800 !important;
+    float: right;
 }
 
 .alert {
   text-align: center;
+}
+
+.title {
+  margin: 20px;
+  font-size: 30px;
+  color: #d25800;
+  font-weight: 900;
 }
 
 
