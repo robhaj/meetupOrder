@@ -1,4 +1,4 @@
-myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", function($scope, $http, meetupFactory) {
+myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$uibModal", function($scope, $http, meetupFactory, $uibModal, $log) {
 
   $scope.eventURL = "";
   $scope.correctInfo = false;
@@ -92,9 +92,18 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", functio
     $scope.eventURL = "";
   };
 
-  $scope.showInstructions = function () {
-    $scope.instructions = !$scope.instructions;
-    console.log($scope.instructions);
+  // $scope.showInstructions = function () {
+  //   $scope.instructions = !$scope.instructions;
+  //   console.log($scope.instructions);
+  // };
+
+   $scope.openModal = function (size) {
+
+    var modalInstance = $uibModal.open({
+      templateUrl: 'partials/infoModal.html',
+      controller: 'PizzaController',
+      size: size,
+    });
   };
 
 }]);
