@@ -49,6 +49,7 @@ textarea:focus, input:focus, .btn:focus, .form-control:focus, .uneditable-input:
 
 .info {
   margin: 5px;
+  color: #d25800;
   border-color: #d25800 !important;
     float: right;
 }
