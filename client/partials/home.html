@@ -1,19 +1,54 @@
+
+ <!--  <div class="row">
+    <button type="button" class="btn btn-default btn-lg col-xs-2 info" aria-label="Right Align" ng-click="showInstructions()">
+     <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> INFO
+    </button>
+    <div class="alert alert-info col-xs-10 info" role="alert" ng-show="instructions">This app was made to help dynamically order pizzas for meetup's hosted on meetup.com
+    It uses Denver Pizza Co so you will need a DPC account which you can make <a href="https://denverpizzaco.hungerrush.com/account/register">here</a>.
+    Payment information is set up locally and will need to be modified to actually place an order.
+    </div>
+ -->
+
+<div>
+   <span class="title"> meetup.pizza</span>
+
+   <button type="button" class="btn btn-default btn-lg info" aria-label="Right Align" ng-click="openModal()">
+       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> INFO
+  </button>
+</div>
+
+
+  <div class='row'>
+    <div class="col-xs-8 col-xs-offset-4">
+      <br><br><br>
+      <img src="./public/css/pizza1.jpg" class="animated infinite pulse">
+      <br><br><br>
+    </div>
+  </div>
+
+  </div>
+
+
+  <br><hr><br>
+
 <div class="row">
 
   <form class="col-xs-8 col-xs-offset-2">
 
     <div class="form-group">
+      <br><br>
 
       <label>Paste MeetUp Event URL</label>
       <input ng-model="eventURL" class="form-control" placeholder="MeetUp Event URL">
 
       <div class="col-xs-8 col-xs-offset-2">
+        <br>
         <button ng-click="findEvent(eventURL)" type="submit" class="btn btn-block btn-primary" required>Find Meet Up</button>
       </div>
 
-      <br><br>
+      <br><br><br>
 
-      <div ng-show="incorrectInfo" class="alert alert-danger col-xs-12">
+      <div ng-show="incorrectInfo" class="alert alert-danger col-xs-8 col-xs-offset-2">
         <span> Please resubmit the Meetup link and/or verify that the Meetup page lists a valid address!</span>
       </div>
 
@@ -51,7 +86,7 @@
 
 
       <div>
-        <hr>
+        <hr><br>
         <label>Denver Pizza Co. Acccount Email</label>
         <input ng-model = "email" type="email" class="form-control" placeholder="DPC Email" required>
       </div>
@@ -64,6 +99,7 @@
       </div>
 
       <div class="col-xs-8 col-xs-offset-2">
+      <br>
         <button ng-click="placeOrder(data); addUser()" type="submit" class="btn btn-block btn-primary">Submit Order</button>
       </div>
     </div>

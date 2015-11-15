@@ -1,10 +1,10 @@
 var config = {};
 
-config.meetupkey = "UPDATE ME";
+config.meetupkey = "44d874497869d56281ca2e604d34";
 
-config.cardholder = 'UPDATE ME';
+config.cardholder = 'FAKE NAME';
 config.cc = 'UPDATE ME';
 config.expmonth = 'UPDATE ME';
-config.csv = 'UPDATE ME';
+config.csv = 'ooo';
 
 module.exports = config;
