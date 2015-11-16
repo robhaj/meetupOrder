@@ -92,16 +92,12 @@ myApp.controller("PizzaController", ["$scope", "$http", "meetupFactory", "$uibMo
     $scope.eventURL = "";
   };
 
-  // $scope.showInstructions = function () {
-  //   $scope.instructions = !$scope.instructions;
-  //   console.log($scope.instructions);
-  // };
 
    $scope.openModal = function (size) {
 
-    var modalInstance = $uibModal.open({
+   var modalInstance = $uibModal.open({
       templateUrl: 'partials/infoModal.html',
-      controller: 'PizzaController',
+      controller: 'ModalController',
       size: size,
     });
   };

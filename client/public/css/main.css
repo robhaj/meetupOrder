@@ -65,4 +65,13 @@ textarea:focus, input:focus, .btn:focus, .form-control:focus, .uneditable-input:
   font-weight: 900;
 }
 
+.modalLink {
+  padding-top: 10px;
+  float: left;
+}
+
+.modal-body {
+  padding-top: 25px;
+}
+
 
