@@ -1,13 +1,37 @@
 
-<!--   <div class="modal-header">
-        </div> -->
         <div class="modal-body">
-            This app was made to help dynamically order pizzas for meetup's hosted on meetup.com
-            It uses Denver Pizza Co so you will need a DPC account which you can make <a href="https://denverpizzaco.hungerrush.com/account/register">here</a>.
-            Payment information is set up locally and will need to be modified to actually place an order.
+            <p>
+                The purpose of this app is to partially automate the process of ordering pizza for Meetups organized through Meetup.com.
+            </p>
+
+            <p>
+                By providing a Meetup link and specifiying the expected percentage of attending RSVPs, the app uses an automated web driver to place an order for the provided meetup, delivered to the event's location.
+            </p>
+
+             <p>
+                The web driver utilizes the Chrome browser to automate user input, so you will need to have Chrome installed on your machine.
+            </p>
+
+            <p>
+                The order placement function is currently configured to order enough pizzas for approximately two slices per expected attendee. The types of pizzas ordered are approximately distributed as cheese (40%), pepperoni (40%) and veggie (20%).
+            </p>
+
+            <p>
+                Pizzas are ordered from Denver Pizza Company, so to successfully place an order, you will need to register a username and password on the DPC website, which you can do <a href="https://denverpizzaco.hungerrush.com/account/register" target="DPC-Register">here</a>. However, for a  demonstration (no order will actually be placed), please use these guest credentials:
+                <ul>
+                    <li>Username: meetup.pizza@gmail.com </li>
+                    <li>Password: galvanize11 </li>
+                </ul>
+            </p>
+
+            <p>
+                Also, payment information is set up locally and will need to be modified to actually place an order.
+            </p>
         </div>
+
         <div class="modal-footer">
-            <a class = "modalLink" href="http://denverpizzaco.com/">Denver Pizza Company &nbsp&nbsp</a>
-            <a class = "modalLink" href="http://www.meetup.com/">Meetup.com</a>
+            <a class= "githubLink" href="https://github.com/robhaj/meetupOrder" target="github"> <img class='github' src="./public/css/Octocat.jpg"> </a>
+            <a class = "modalLink" href="http://denverpizzaco.com/"target="DPC">Denver Pizza Company &nbsp&nbsp</a>
+            <a class = "modalLink" href="http://www.meetup.com/" target="DPC">Meetup.com</a>
             <button class="btn btn-primary glyphicon glyphicon-remove" type="button" ng-click="closeModal()"></button>
         </div>

@@ -67,6 +67,7 @@ textarea:focus, input:focus, .btn:focus, .form-control:focus, .uneditable-input:
 
 .modalLink {
   padding-top: 10px;
+  display: inline-block;
   float: left;
 }
 
@@ -74,4 +75,14 @@ textarea:focus, input:focus, .btn:focus, .form-control:focus, .uneditable-input:
   padding-top: 25px;
 }
 
+.github {
+  height: 40px;
+  width: 34px;
+}
+
+.githubLink {
+  padding-bottom: 10px;
+  padding-right: 20px;
+  float: left;
+}
 
